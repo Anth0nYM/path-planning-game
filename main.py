@@ -1,9 +1,12 @@
+from models.obstacle_maker import ObstacleMaker
 class Main:
     def __init__(self):
         pass
 
 if __name__ == "__main__":
-    print("Começando o projeto")
+    criador = ObstacleMaker()
+    obs_teste = criador.create(5,seed=42)
+    print(obs_teste)
 
 
 
