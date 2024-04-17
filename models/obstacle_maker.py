@@ -1,6 +1,6 @@
 
 import random
-from aux.obstacle import is_colliding, decompose_obstacle
+from auxiliaries.obstacle import is_colliding, decompose_obstacle
 
 class ObstacleMaker:
     """_summary_
