@@ -22,6 +22,7 @@ class Platform:
         Shows on the platform all the paths found
         """
         plt.figure(figsize=(8, 8))
+        plt.gca().set_aspect('equal', adjustable='box')
         for obstacle in self.obstacles:
             for segment in obstacle:
                 x_values, y_values = zip(*segment)

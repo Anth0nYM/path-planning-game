@@ -35,5 +35,5 @@ class ObstacleMaker:
                     break
         for obstacle_coords in new_obstacles:
             decomposed_obstacles.append(decompose_obstacle(obstacle_coords))
-        return decomposed_obstacles
+        return decomposed_obstacles, new_obstacles
     
