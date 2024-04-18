@@ -1,6 +1,10 @@
 """_summary_
 Search helper functions
 """
+
+# IMCOMPLETE 
+import matplotlib.pyplot as plt
+
 def segments_intersect(segment1, segment2):
     """__summary__
     Check whether the movement is valid by calculating the determinant."""
@@ -22,43 +26,9 @@ def is_intersecting(segment, segment_list):
                 return True
     return False
 
-
-
-def get_neighbors(node, obstacles):
-    """Apply the function above in the list of obstacles, to get the neighboors."""
-    neighbors = []
-    for obstacle in obstacles:
-        for edge in obstacle:
-            if segments_intersect([node, node], edge):  # Checks whether the segment between the node and the obstacle vertex is valid
-                neighbors.append(edge[0])  # Add obstacle vertex as neighbor
-    return neighbors
-
-def find_neighbor_in_obstacle(node, obstacles):
-    for obstacle in obstacles:
-        for edge in obstacle:
-            if node in edge:  
-                idx = edge.index(node)
-                next_vertex_idx = (idx + 1) % 2  # Gets the index of the next vertex on the same edge
-                next_vertex = edge[next_vertex_idx]
-                return next_vertex
-    return None 
-
-obstacles = [[(0, 0), (50, 50)], [(50, 50), (60, 50)], [(60, 50), (60, 60)], [(60, 60), (100, 100)]]
-
-
-node1 = (50, 50)
-neighbor1 = find_neighbor_in_obstacle(node1, obstacles)
-print("Ponto 1:", node1)
-print("Vizinho 1:", neighbor1)
-
-
-node2 = (60, 50)
-neighbor2 = find_neighbor_in_obstacle(node2, obstacles)
-print("Ponto 2:", node2)
-print("Vizinho 2:", neighbor2)
-
-
-node3 = (10, 10)
-neighbor3 = find_neighbor_in_obstacle(node3, obstacles)
-print("Ponto 3:", node3)
-print("Vizinho 3:", neighbor3)
+segment1 = [(0,0),(10,10)]
+segment2 = [(0,10),(10,0)]
+plt.figure(figsize=(8, 8))
+plt.gca().set_aspect('equal', adjustable='box')
+plt.plot()
+#print(segments_intersect(segment1,segment2))

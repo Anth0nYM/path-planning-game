@@ -23,16 +23,24 @@ class Platform:
         """
         plt.figure(figsize=(8, 8))
         plt.gca().set_aspect('equal', adjustable='box')
+        
+        # Obstacles plot
         for obstacle in self.obstacles:
-            for segment in obstacle:
-                x_values, y_values = zip(*segment)
-                plt.plot(x_values, y_values, color="red")  # Plot obstacles
+            x_values, y_values = zip(*obstacle['edges'])
+            plt.plot(x_values, y_values, color="red")  # Plot obstacles
+        
+        # Path plot
         for path in paths:
-            for segment in path:
-                x_values, y_values = zip(*segment)
-                plt.plot(x_values, y_values, color="blue")  # Plot each path
+            x_values, y_values = zip(*path)
+            plt.plot(x_values, y_values, color="blue")  # Plot each path
+        
+        # Start and end point plot
         plt.scatter(*self.start_point, color="blue")
         plt.scatter(*self.end_point, color="green")
+        
+        # Graph limits
         plt.xlim(-5, self.size + 5)
         plt.ylim(-5, self.size + 5)
+        
+        # Show plot
         plt.show()

@@ -1,6 +1,6 @@
 
 import random
-from auxiliaries.obstacle import is_colliding, decompose_obstacle
+from auxiliaries.obstacle import is_colliding, generate_edges
 
 class ObstacleMaker:
     """_summary_
@@ -17,7 +17,6 @@ class ObstacleMaker:
         new_obstacles = []
         obstacles_generated = 0
         loop_limite = 1000
-        decomposed_obstacles = []
         while obstacles_generated < num_obstacles:
             obstacle_coords = (
                 random.randint(0, platform_size - self.obstacle_size),
@@ -33,7 +32,5 @@ class ObstacleMaker:
                     print(f"The maximun number of obstacles, each measuring {self.obstacle_size}x{self.obstacle_size} for a plane of size {platform_size}x{platform_size} is {len(new_obstacles)}")
                     print(f"The {len(new_obstacles)} obstacles generated are:")
                     break
-        for obstacle_coords in new_obstacles:
-            decomposed_obstacles.append(decompose_obstacle(obstacle_coords))
-        return decomposed_obstacles, new_obstacles
+        return generate_edges(new_obstacles)  
     

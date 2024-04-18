@@ -25,21 +25,30 @@ def is_colliding(new_obstacle, obstacles,obstacle_size=10):
 
     return False
 
-def decompose_obstacle(obstacle,obstacle_size=10):
+def generate_edges(coordinates):
     """_summary_
-    Receives a tuple that corresponds to the bottom left point of an obstacle and returns its edges
+    Generate the edges of the obstacles
     """
-    x, y = obstacle
-    segments = [
-        [(x, y), (x + obstacle_size, y)],
-        [
-            (x + obstacle_size, y),
-            (x + obstacle_size, y + obstacle_size),
-        ],
-        [
-            (x + obstacle_size, y + obstacle_size),
-            (x, y + obstacle_size),
-        ],
-        [(x, y + obstacle_size), (x, y)],
-    ]
-    return segments
+    obstacles = []
+    for coord in coordinates:
+        x, y = coord
+        edges = [
+            (x, y),           
+            (x + 10, y),      
+            (x + 10, y + 10), 
+            (x, y + 10),      
+            (x, y)            
+        ]
+        obstacle = {"edges": edges}
+        obstacles.append(obstacle)
+    return obstacles
+
+def get_vertex(obstacle):
+    """_summary_
+    Obtain the vertexes of an obstacle
+    """
+    edges = obstacle['edges']
+    vertexes = set()
+    for edge in edges:
+        vertexes.add(edge)
+    return vertexes    
