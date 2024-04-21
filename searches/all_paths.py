@@ -4,9 +4,8 @@ Generate all possible paths from my starting point to my ending point
 from auxiliaries.search import generate_neighbors
 import collections
 
-def depth_first_search(obstacles_edges, obstacles_vertexes,initial_point=(0, 0), target_point=(100, 100)):
+def depth_first_search(obstacles_edges, obstacles_vertexes, initial_point=(0, 0), target_point=(100, 100)):
     stack = collections.deque([(initial_point, [initial_point])])
-    visited = set()
     paths = []
 
     while stack:
@@ -16,10 +15,10 @@ def depth_first_search(obstacles_edges, obstacles_vertexes,initial_point=(0, 0),
             paths.append(path)
             continue
 
-        visited.add(current)
-
-        for neighbor in generate_neighbors(obstacles_edges, obstacles_vertexes,current):
-            if neighbor not in visited:
+        for neighbor in generate_neighbors(obstacles_edges, obstacles_vertexes, current):
+            if neighbor not in path:  # Evitar ciclos
                 stack.append((neighbor, path + [neighbor]))
 
     return paths
+
+

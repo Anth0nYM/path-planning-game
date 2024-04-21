@@ -5,7 +5,7 @@ Search helper functions
 
 def generate_neighbors(obstacles_edges, obstacles_vertexes, current_point, target_point=(100, 100)):
     """__summary__
-    Check if the segment intersects any obstacle edge."""
+    Generate neighbors of a determinate point."""
     neighbors = []
 
     for obstacle_vertex in obstacles_vertexes:
