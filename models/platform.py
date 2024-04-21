@@ -1,8 +1,11 @@
 import matplotlib.pyplot as plt
+
+
 class Platform:
     """_summary_
     Platform class
     """
+
     def __init__(
         self,
         obstacles,
@@ -23,26 +26,28 @@ class Platform:
         """
         plt.figure(figsize=(8, 8))
         plt.gca().set_aspect('equal', adjustable='box')
-        
-        # Obstacles plot
-        for obstacle in self.obstacles:
-            for edge in obstacle['edges']:
-                x_values, y_values = zip(*edge)
-                plt.plot(x_values, y_values, color="red")  # Plot edge of obstacle
 
-        
         # Path plot
         for path in paths:
             x_values, y_values = zip(*path)
             plt.plot(x_values, y_values, color="blue")  # Plot each path
-        
+        x_values, y_values = zip(*paths[0])
+        plt.plot(x_values, y_values, color="yellow",linewidth=5)
+
+        # Obstacles plot
+        for obstacle in self.obstacles:
+            for edge in obstacle['edges']:
+                x_values, y_values = zip(*edge)
+                # Plot edge of obstacle
+                plt.plot(x_values, y_values, color="red")
+
         # Start and end point plot
         plt.scatter(*self.start_point, color="blue")
         plt.scatter(*self.end_point, color="green")
-        
+
         # Graph limits
         plt.xlim(-5, self.size + 5)
         plt.ylim(-5, self.size + 5)
-        
+
         # Show plot
         plt.show()

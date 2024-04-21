@@ -2,7 +2,8 @@
     Obstacle helper functions
 """
 
-def is_colliding(new_obstacle, obstacles,obstacle_size=10):
+
+def is_colliding(new_obstacle, obstacles, obstacle_size=10):
     """_summary_
     Checks whether a new obstacle invades the area of an existing one
     """
@@ -24,6 +25,7 @@ def is_colliding(new_obstacle, obstacles,obstacle_size=10):
             return True
 
     return False
+
 
 def generate_edges(bottom_left_coordinates):
     """Generate the edges of the obstacles."""
