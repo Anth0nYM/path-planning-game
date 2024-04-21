@@ -25,30 +25,32 @@ def is_colliding(new_obstacle, obstacles,obstacle_size=10):
 
     return False
 
-def generate_edges(coordinates):
-    """_summary_
-    Generate the edges of the obstacles
-    """
+def generate_edges(bottom_left_coordinates):
+    """Generate the edges of the obstacles."""
     obstacles = []
-    for coord in coordinates:
-        x, y = coord
+    for bottom_left in bottom_left_coordinates:
+        x, y = bottom_left
         edges = [
-            (x, y),           
-            (x + 10, y),      
-            (x + 10, y + 10), 
-            (x, y + 10),      
-            (x, y)            
+            [(x, y), (x + 10, y)],
+            [(x + 10, y), (x + 10, y + 10)],
+            [(x + 10, y + 10), (x, y + 10)],
+            [(x, y + 10), (x, y)],
         ]
         obstacle = {"edges": edges}
         obstacles.append(obstacle)
     return obstacles
 
-def get_vertex(obstacle):
-    """_summary_
-    Obtain the vertexes of an obstacle
-    """
-    edges = obstacle['edges']
-    vertexes = set()
-    for edge in edges:
-        vertexes.add(edge)
-    return vertexes    
+
+def generate_vertexes(bottom_left_coordinates):
+    """Generate the vertexes of the obstacles."""
+    obstacles = []
+    for bottom_left in bottom_left_coordinates:
+        x, y = bottom_left
+        vertexes = [
+            (x, y),
+            (x + 10, y),
+            (x + 10, y + 10),
+            (x, y + 10),
+        ]
+        obstacles.append(vertexes)
+    return obstacles

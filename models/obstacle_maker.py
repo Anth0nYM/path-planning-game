@@ -1,6 +1,6 @@
 
 import random
-from auxiliaries.obstacle import is_colliding, generate_edges
+from auxiliaries.obstacle import *
 
 class ObstacleMaker:
     """_summary_
@@ -32,5 +32,5 @@ class ObstacleMaker:
                     print(f"The maximun number of obstacles, each measuring {self.obstacle_size}x{self.obstacle_size} for a plane of size {platform_size}x{platform_size} is {len(new_obstacles)}")
                     print(f"The {len(new_obstacles)} obstacles generated are:")
                     break
-        return generate_edges(new_obstacles)  
+        return generate_edges(new_obstacles), generate_vertexes(new_obstacles)
     

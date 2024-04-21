@@ -2,10 +2,8 @@
 Search helper functions
 """
 
-# IMCOMPLETE 
-import matplotlib.pyplot as plt
 
-def segments_intersect(segment1, segment2):
+def do_segments_intersect(segment1, segment2):
     """__summary__
     Check whether the movement is valid by calculating the determinant."""
     k = segment1[0]
@@ -19,16 +17,28 @@ def segments_intersect(segment1, segment2):
     t = ((l[0] - k[0]) * (m[1] - k[1]) - (l[1] - k[1]) * (m[0] - k[0])) / det
     return 0 < s < 1 and 0 < t < 1
 
-def is_intersecting(segment, segment_list):
-    for segment_n in segment_list:
-        for seg in segment_n:
-            if segments_intersect(segment, seg):
+def is_intersecting(segment, obstacles_edges): #TODO DEPURAR ISSO
+    """Check if the segment intersects any obstacle edge."""
+    for obstacle in obstacles_edges:
+        for edge in obstacle['edges']:
+            if do_segments_intersect(segment, edge):
                 return True
     return False
 
-segment1 = [(0,0),(10,10)]
-segment2 = [(0,10),(10,0)]
-plt.figure(figsize=(8, 8))
-plt.gca().set_aspect('equal', adjustable='box')
-plt.plot()
-#print(segments_intersect(segment1,segment2))
+
+
+def generate_neighbors(obstacles_edges, obstacles_vertexes, current_point=(0,0), target_point=(100,100)):
+    """Generate the neighbors of the current point."""
+    neighbors = []
+    
+    # Verifica interseção com os possíveis vizinhos representados pelos vértices dos obstáculos
+    for obstacle_vertex in obstacles_vertexes:
+        for possible_neighbor in obstacle_vertex:
+            if not is_intersecting([current_point, possible_neighbor], obstacles_edges):
+                neighbors.append(possible_neighbor)
+    
+    # Verifica interseção com o ponto alvo
+    if not is_intersecting([current_point, target_point], obstacles_edges):
+        neighbors.append(target_point)
+    
+    return neighbors

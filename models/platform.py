@@ -26,8 +26,10 @@ class Platform:
         
         # Obstacles plot
         for obstacle in self.obstacles:
-            x_values, y_values = zip(*obstacle['edges'])
-            plt.plot(x_values, y_values, color="red")  # Plot obstacles
+            for edge in obstacle['edges']:
+                x_values, y_values = zip(*edge)
+                plt.plot(x_values, y_values, color="red")  # Plot edge of obstacle
+
         
         # Path plot
         for path in paths:
