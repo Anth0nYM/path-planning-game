@@ -10,7 +10,8 @@ def generate_neighbors(obstacles_edges, obstacles_vertexes, current_point, targe
 
     for obstacle_vertex in obstacles_vertexes:
         for possible_neighbor in obstacle_vertex:
-            if not is_intersecting([current_point, possible_neighbor], obstacles_edges):
+            possible_neighbor=clean_neighborhood(current_point, possible_neighbor)
+            if possible_neighbor is not None and not is_intersecting([current_point, possible_neighbor], obstacles_edges):
                 neighbors.append(possible_neighbor)
 
     if not is_intersecting([current_point, target_point], obstacles_edges):
@@ -42,3 +43,17 @@ def do_segments_intersect(segment1, segment2):
     s = ((n[0] - m[0]) * (m[1] - k[1]) - (n[1] - m[1]) * (m[0] - k[0])) / det
     t = ((l[0] - k[0]) * (m[1] - k[1]) - (l[1] - k[1]) * (m[0] - k[0])) / det
     return 0 < s < 1 and 0 < t < 1
+
+
+def clean_neighborhood(current_point, possible_neighbor):
+    if current_point == possible_neighbor:
+        return None
+    else:
+        if (possible_neighbor[0] == current_point[0] + 10 and possible_neighbor[1] == current_point[1] + 10) or \
+            (possible_neighbor[0] == current_point[0] + 10 and possible_neighbor[1] == current_point[1] - 10) or \
+            (possible_neighbor[0] == current_point[0] - 10 and possible_neighbor[1] == current_point[1] + 10) or \
+            (possible_neighbor[0] == current_point[0] - 10 and possible_neighbor[1] == current_point[1] - 10):
+            return None
+        else:
+            return possible_neighbor
+
