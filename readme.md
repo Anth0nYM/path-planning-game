@@ -13,3 +13,12 @@ The figure below shows an example of a valid movement:
 
 On the other hand, Figure Two depicts an example of an invalid movement:
 ![Invalid move](img/invalid-move.png)
+
+## To run
+
+To run, clone this repository, browse and install dependencies with
+`pip install -r requirements.txt` , then run with `python main.py`
+
+The main.py file encompasses all the necessary steps to execute and customize the code. If you wish to make modifications or additions, you are welcome to do so.
+
+Thanks for reading :)
