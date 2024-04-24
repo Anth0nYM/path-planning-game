@@ -14,13 +14,16 @@ if __name__ == "__main__":
 
  # Making obstacles
     maker = ObstacleMaker()
-    obs_edges, obs_vertexes = maker.create(1, seed=None)
+    obs_edges, obs_vertexes = maker.create(2, seed=2)
 
 # Generating paths, chose one of 3 methods
     # random_paths = generate_random_paths(1, seed=2)
-    # dfs_all = all(obs_edges, obs_vertexes) # Be careful with the number of obstacles,(On my machine, I achieved instant results only with 3 obstacles; adding too many could significantly extend the processing time)
-    dfs_one = one(obs_edges, obs_vertexes)
+    # Be careful with the number of obstacles,(On my machine, I achieved instant results only with 3 obstacles; adding too many could significantly extend the processing time)
+    dfs_all = all(obs_edges, obs_vertexes)
+    # dfs_one = one(obs_edges, obs_vertexes)
 
 # Displaying the platform
     plataforma = Platform(obs_edges)
-    plataforma.display(dfs_one)
+    highlight_path = 0  # highlight_path is the index of the path you want to highlight
+    plataforma.display(dfs_all, highlight_path)
+    print(f"{len(dfs_all)} \n {dfs_all[highlight_path]}")

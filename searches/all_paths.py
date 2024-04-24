@@ -16,7 +16,7 @@ def depth_first_search(obstacles_edges, obstacles_vertexes, initial_point=(0, 0)
             continue
 
         for neighbor in generate_neighbors(obstacles_edges, obstacles_vertexes, current):
-            if neighbor not in path:  # Evitar ciclos
+            if neighbor not in path:  # bypass cycles
                 stack.append((neighbor, path + [neighbor]))
 
     return paths

@@ -20,7 +20,7 @@ class Platform:
         self.size = size
         self.obstacle_size = obstacle_size
 
-    def display(self, paths):
+    def display(self, paths,highlight_path):
         """_summary_
         Shows on the platform all the paths found
         """
@@ -31,7 +31,7 @@ class Platform:
         for path in paths:
             x_values, y_values = zip(*path)
             plt.plot(x_values, y_values, color="blue")  # Plot each path
-        x_values, y_values = zip(*paths[0])
+        x_values, y_values = zip(*paths[highlight_path])
         plt.plot(x_values, y_values, color="yellow",linewidth=5)
 
         # Obstacles plot
