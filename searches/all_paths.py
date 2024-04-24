@@ -1,9 +1,10 @@
 from auxiliaries.search import generate_neighbors
 import collections
 
+
 def depth_first_search(obstacles_edges, obstacles_vertexes, initial_point=(0, 0), target_point=(100, 100)):
     """_summary_
-    Generate all possible paths from my starting point to my ending point
+    Uses DFS (Depth First Search) to generate all possible paths from my starting point to my ending point
     """
     stack = collections.deque([(initial_point, [initial_point])])
     paths = []
@@ -20,5 +21,3 @@ def depth_first_search(obstacles_edges, obstacles_vertexes, initial_point=(0, 0)
                 stack.append((neighbor, path + [neighbor]))
 
     return paths
-
-

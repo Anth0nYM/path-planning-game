@@ -10,7 +10,8 @@ def generate_neighbors(obstacles_edges, obstacles_vertexes, current_point, targe
 
     for obstacle_vertex in obstacles_vertexes:
         for possible_neighbor in obstacle_vertex:
-            possible_neighbor=clean_neighborhood(current_point, possible_neighbor)
+            possible_neighbor = clean_neighborhood(
+                current_point, possible_neighbor)
             if possible_neighbor is not None and not is_intersecting([current_point, possible_neighbor], obstacles_edges):
                 neighbors.append(possible_neighbor)
 
@@ -52,8 +53,7 @@ def clean_neighborhood(current_point, possible_neighbor):
         if (possible_neighbor[0] == current_point[0] + 10 and possible_neighbor[1] == current_point[1] + 10) or \
             (possible_neighbor[0] == current_point[0] + 10 and possible_neighbor[1] == current_point[1] - 10) or \
             (possible_neighbor[0] == current_point[0] - 10 and possible_neighbor[1] == current_point[1] + 10) or \
-            (possible_neighbor[0] == current_point[0] - 10 and possible_neighbor[1] == current_point[1] - 10):
+                (possible_neighbor[0] == current_point[0] - 10 and possible_neighbor[1] == current_point[1] - 10):
             return None
         else:
             return possible_neighbor
-

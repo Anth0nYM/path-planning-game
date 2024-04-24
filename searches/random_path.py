@@ -1,5 +1,6 @@
 import random
 
+
 def generate_random_paths(num_paths, seed=None, platform_size=100, max_intermediary_points=10):
     """_summary_
     Generates random paths. (function for plot testing)
